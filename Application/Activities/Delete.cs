@@ -26,6 +26,7 @@ namespace Application.Activities
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
+                // Deleting null give us exception so cut ir here.
                 if (activity == null)
                     return null;
 
